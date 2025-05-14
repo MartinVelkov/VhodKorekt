@@ -1,0 +1,19 @@
+input:required {
+    box-shadow: none; /* Remove shadow if any */
+  }
+  
+  input:required:invalid {
+    outline: none; /* Remove any outline */
+  }
+  
+  /* Hide the asterisk */
+  input:required:focus:invalid:focus ~ span {
+    display: none;
+  }
+  
+  /* Custom style to indicate a required field with an asterisk in label */
+  label span {
+    color: red;
+    margin-left: 2px;
+  }
+  

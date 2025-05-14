@@ -1,0 +1,60 @@
+/* Navbar.css
+.navbar {
+  @apply bg-gradient-to-r from-blue-900 to-blue-800 p-4 shadow-lg rounded-lg relative;
+}
+
+.navbar-container {
+  @apply flex justify-between items-center max-w-screen-lg mx-auto;
+}
+
+.navbar-link {
+  @apply text-white text-xl font-bold no-underline transition-colors duration-300;
+}
+
+.navbar-link:hover {
+  @apply text-blue-200;
+}
+
+.navbar-menu {
+  @apply flex gap-6 items-center;
+}
+
+.navbar-menu-item {
+  @apply relative;
+}
+
+.navbar-menu-button {
+  @apply text-white text-sm font-medium bg-transparent border-none cursor-pointer flex items-center transition-colors duration-300;
+}
+
+.navbar-menu-button:hover {
+  @apply text-blue-200;
+}
+
+.navbar-menu-button svg {
+  @apply ml-2 transition-transform duration-300;
+}
+
+.navbar-menu-button.active svg {
+  @apply transform rotate-180;
+}
+
+.navbar-dropdown {
+  @apply absolute top-full right-0 mt-2 bg-gray-800 text-gray-300 rounded-lg shadow-lg min-w-[200px] z-50 opacity-0 transform scale-y-0 transition-all duration-300 ease-in-out hidden;
+}
+
+.navbar-dropdown.active {
+  @apply opacity-100 transform scale-y-100 block;
+}
+
+.navbar-dropdown-item {
+  @apply px-4 py-3 no-underline text-gray-300 block transition-colors duration-300 rounded-md;
+}
+
+.navbar-dropdown-item:hover {
+  @apply bg-gray-700;
+}
+
+.navbar-dropdown-item:active {
+  @apply bg-gray-800;
+} */
