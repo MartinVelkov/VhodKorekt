@@ -1,0 +1,133 @@
+/* ===== SUMMARY TABLE (restore old wide grid look) ===== */
+
+.tableHost {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 14px;
+}
+
+.summaryTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  font-size: 0.95rem;
+}
+
+/* cells */
+.summaryTable th,
+.summaryTable td {
+  padding: 12px 10px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* header */
+.summaryTable thead tr:first-child th {
+  background: #f0f4f8;
+  font-weight: 700;
+}
+
+.summaryTable thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* category column behaves like old: readable, not compressed */
+.summaryTable td:first-child,
+.summaryTable th:first-child {
+  text-align: center; /* change to left if you prefer */
+  min-width: 260px;
+}
+
+/* month columns */
+.summaryTable th:not(:first-child),
+.summaryTable td:not(:first-child) {
+  min-width: 110px;
+}
+
+/* ===== row highlights (match old) ===== */
+.summaryTable tbody tr.summary-expense td {
+  background: #fff3cd;
+  font-weight: 700;
+}
+
+.summaryTable tbody tr.summary-income td {
+  background: #d4edda;
+  font-weight: 700;
+}
+
+.summaryTable tbody tr.summary-balance td {
+  background: #f8d7da;
+  font-weight: 700;
+}
+
+.summaryTable tbody tr.summary-cash td {
+  background: #cce5ff;
+  font-weight: 700;
+}
+
+/* If you want your 4 custom rows to match old, use these classes instead of inline styles */
+.expenseRow td {
+  background: #f8d7da;
+  font-weight: 700;
+}
+.cashRow td {
+  background: #d4edda;
+  font-weight: 700;
+}
+.incomeRow td {
+  background: #cce5ff;
+  font-weight: 700;
+}
+.remainRow td {
+  background: #fff3cd;
+  font-weight: 700;
+}
+
+/* ===== year pills stay compact like old ===== */
+.yearBar {
+  margin-bottom: 0.5rem;
+}
+
+.yearPill {
+  border: 1px solid #ccc;
+  width: 100px;
+  height: 30px;
+  border-radius: 999px;
+  padding: 0.2rem 0.8rem;
+  margin-right: 0.4rem;
+  background: #ccc;
+  cursor: pointer;
+}
+
+.yearPill:hover {
+  background: #f0f0f0;
+}
+
+.yearPill.active {
+  font-weight: 600;
+  background: #198754;
+  color: #fff;
+  border-color: #198754;
+}
+
+/* ===== mobile: keep old behavior (scroll) ===== */
+@media (max-width: 768px) {
+  .summaryTable {
+    min-width: 900px;
+  }
+.yearPill {
+  width: 60px;
+  height: 30px;
+}
+  .summaryTable th,
+  .summaryTable td {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+}

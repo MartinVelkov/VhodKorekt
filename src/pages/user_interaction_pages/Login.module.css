@@ -1,0 +1,247 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  --container-max: 1200px;
+  --c-ink: rgba(17, 24, 39, 0.92);
+  --c-muted: rgba(55, 65, 81, 0.86);
+  --focus: rgba(59, 130, 246, 0.60);
+
+  --r-card: 18px;
+  --r-control: 12px;
+
+  --sh-card: 0 24px 70px rgba(0, 0, 0, 0.16);
+  --sh-card-hover: 0 32px 90px rgba(0, 0, 0, 0.20);
+}
+
+.page {
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+/* Shared shell */
+.shellDesktop,
+.shellMobile {
+  min-height: 100vh;
+  display: grid;
+}
+
+.shellDesktop {
+  grid-template-columns: 1fr 1fr;
+}
+
+.shellMobile {
+  grid-template-columns: 1fr;
+  background: #f7f8fb;
+  padding: 24px 16px;
+}
+
+/* Brand panel */
+.brandPanel {
+  display: none;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(124, 58, 237, 0.10));
+  padding: 48px;
+}
+
+.brandInner {
+  height: 100%;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.brandTitle {
+  margin: 0;
+  font-size: clamp(28px, 2.8vw, 44px);
+  font-weight: 850;
+  color: rgba(17, 24, 39, 0.90);
+  letter-spacing: 0.2px;
+}
+
+.brandSubtitle {
+  margin: 0;
+  max-width: 54ch;
+  color: rgba(55, 65, 81, 0.78);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.brandLogo {
+  margin-top: 16px;
+  width: clamp(220px, 22vw, 380px);
+  height: auto;
+  filter: drop-shadow(0 20px 44px rgba(0, 0, 0, 0.18));
+}
+
+/* Form panel */
+.formPanel {
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+  background: #ffffff;
+}
+
+.card {
+  width: min(460px, 100%);
+  border-radius: var(--r-card);
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  background: #ffffff;
+  box-shadow: var(--sh-card);
+  padding: clamp(18px, 3vw, 28px);
+}
+
+.cardHeader {
+  display: grid;
+  gap: 8px;
+  text-align: center;
+}
+
+.mobileLogo {
+  width: 130px;
+  height: auto;
+  margin: 0 auto 6px;
+  filter: drop-shadow(0 16px 34px rgba(0, 0, 0, 0.14));
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 850;
+  color: var(--c-ink);
+}
+
+.helper {
+  margin: 0;
+  color: rgba(55, 65, 81, 0.72);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.linkBtn {
+  border: 0;
+  background: transparent;
+  color: rgba(37, 99, 235, 0.95);
+  font-weight: 750;
+  cursor: pointer;
+  padding: 0 2px;
+}
+
+.linkBtn:hover {
+  text-decoration: underline;
+}
+
+/* Form */
+.form {
+  margin-top: 14px;
+  display: grid;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 750;
+  color: rgba(17, 24, 39, 0.78);
+}
+
+.input {
+  height: 44px;
+  width: 95%;
+  border-radius: var(--r-control);
+  border: 1px solid rgba(17, 24, 39, 0.14);
+  background: #ffffff;
+  padding: 0 12px;
+  font-size: 15px;
+  color: rgba(17, 24, 39, 0.92);
+  outline: none;
+  transition: box-shadow 150ms ease, border-color 150ms ease;
+}
+
+.input:focus {
+  border-color: rgba(37, 99, 235, 0.45);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.14);
+}
+
+.forgotRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.forgotLink {
+  font-size: 13px;
+  color: rgba(37, 99, 235, 0.92);
+  text-decoration: none;
+}
+
+.forgotLink:hover {
+  text-decoration: underline;
+}
+
+.error {
+  border-radius: 12px;
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  background: rgba(220, 38, 38, 0.06);
+  color: rgba(185, 28, 28, 0.95);
+  padding: 10px 12px;
+  font-weight: 650;
+  text-align: center;
+}
+
+/* Submit */
+.submit {
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #ffffff;
+  font-weight: 850;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.16);
+  transition: transform 150ms ease, filter 150ms ease;
+}
+
+.submit:hover {
+  filter: brightness(1.03);
+  transform: translateY(-1px);
+}
+
+.submit:active {
+  transform: translateY(0);
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Focus-visible */
+.page :where(a, button, input, [role="button"], [tabindex]):focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+/* Breakpoints */
+@media (min-width: 640px) {
+  .brandPanel {
+    display: block;
+  }
+
+  .shellMobile {
+    padding: 0;
+    background: #ffffff;
+  }
+}
+
+@media (min-width: 1024px) {
+  .brandPanel {
+    padding: 56px;
+  }
+}

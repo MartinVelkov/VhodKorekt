@@ -1,0 +1,203 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  --nav-offset: 64px;
+  --container-max: 1200px;
+
+  --c-bg: #ffffff;
+  --focus: rgba(59, 130, 246, 0.60);
+
+  --r-card: 16px;
+  --r-control: 12px;
+
+  --sh-card: 0 18px 44px rgba(0, 0, 0, 0.14);
+  --sh-card-hover: 0 26px 70px rgba(0, 0, 0, 0.20);
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--nav-offset));
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding-top: var(--nav-offset);
+  background: linear-gradient(135deg, #0b1224 0%, #2a1660 45%, #1242a6 100%);
+}
+
+/* Keep bg-[url('/img/background-3.png')] */
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background-image: url("/img/background-3.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.33;
+  transform: scale(1.04);
+  filter: saturate(1.05) contrast(1.05);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 520px at 50% 35%, rgba(255, 255, 255, 0.10), transparent 62%),
+    radial-gradient(900px 700px at 15% 25%, rgba(124, 58, 237, 0.18), transparent 60%),
+    radial-gradient(800px 600px at 85% 30%, rgba(37, 99, 235, 0.18), transparent 58%),
+    linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.62) 60%, rgba(0,0,0,0.74) 100%);
+}
+
+.heroGlow {
+  position: absolute;
+  inset: -35%;
+  background: radial-gradient(circle at 50% 35%, rgba(255,255,255,0.12), transparent 52%);
+  filter: blur(22px);
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  width: min(var(--container-max), 92%);
+  padding: clamp(24px, 4.8vw, 64px);
+  text-align: center;
+}
+
+.heroTitle {
+  margin: 0;
+  color: #ffffff;
+  font-weight: 850;
+  letter-spacing: 0.3px;
+  line-height: 1.06;
+  font-size: clamp(32px, 5.2vw, 64px);
+  text-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+
+.heroSubtitle {
+  margin: 14px auto 0;
+  max-width: 62ch;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(15px, 1.25vw, 18px);
+  line-height: 1.65;
+}
+
+/* ---------- PAGE ---------- */
+.page {
+  background: var(--c-bg);
+}
+
+.section {
+  padding: clamp(28px, 5vw, 72px) 0;
+}
+
+.container {
+  width: min(var(--container-max), 92%);
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+/* ---------- GRID ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+/* ---------- CARD ---------- */
+.card {
+  border-radius: var(--r-card);
+  background: #ffffff;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  box-shadow: var(--sh-card);
+
+  padding: 18px;
+  display: grid;
+  gap: 10px;
+
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sh-card-hover);
+  border-color: rgba(37, 99, 235, 0.20);
+}
+
+.iconBadge {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.55), rgba(255,255,255,0.14) 55%, rgba(255,255,255,0.06)),
+    linear-gradient(135deg, rgba(37, 99, 235, 0.20), rgba(124, 58, 237, 0.18));
+  border: 1px solid rgba(37, 99, 235, 0.20);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.12);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  color: #2563eb;
+}
+
+.cardTitle {
+  margin: 0;
+  color: rgba(17, 24, 39, 0.92);
+  font-weight: 800;
+  line-height: 1.2;
+  font-size: clamp(16px, 1.3vw, 20px);
+}
+
+.cardText {
+  margin: 0;
+  color: rgba(55, 65, 81, 0.86);
+  line-height: 1.72;
+  font-size: 15px;
+}
+
+.footerWrap {
+  background: #ffffff;
+}
+
+/* Focus-visible */
+.page :where(a, button, [role="button"], [tabindex]):focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: var(--r-control);
+}
+
+/* ---------- BREAKPOINTS ---------- */
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 24px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: 32px;
+  }
+
+  .grid {
+    gap: 22px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    width: min(1300px, 95%);
+  }
+}

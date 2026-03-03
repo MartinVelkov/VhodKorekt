@@ -1,0 +1,197 @@
+.accountWrap {
+  position: relative;
+}
+
+.accountBubble {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: lightgrey;
+  border: 0;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 12px;
+}
+.section {
+  margin-top: 6px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  display: grid;
+  gap: 10px;
+}
+
+.sectionTitle {
+  font-size: 12px;
+  opacity: 0.75;
+  font-weight: 600;
+}
+
+.infoMsg {
+  font-size: 13px;
+  opacity: 0.8;
+}
+.accountBubble:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.accountImg {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.accountText {
+  display: grid;
+  line-height: 1.1;
+}
+
+.accountName {
+  font-size: 14px;
+}
+
+.accountRole {
+  margin: 2px 0 0;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.accountMenu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  min-width: 180px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  z-index: 50;
+}
+
+.menuItem,
+.menuItemDanger {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.menuItem:hover {
+  background: rgba(0,0,0,0.04);
+}
+
+.menuItemDanger {
+  color: #b42318;
+}
+.menuItemDanger:hover {
+  background: rgba(180, 35, 24, 0.08);
+}
+
+.menuDivider {
+  height: 1px;
+  background: rgba(0,0,0,0.08);
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  z-index: 100;
+}
+
+.modalCard {
+  width: min(560px, 100%);
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+  overflow: hidden;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.modalTitle {
+  margin: 0;
+  font-size: 16px;
+}
+
+.iconButton {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.modalBody {
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.label {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.input {
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: rgba(0,0,0,0.28);
+}
+
+.help {
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+.modalFooter {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  padding: 14px 16px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.primaryBtn,
+.secondaryBtn {
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.12);
+}
+
+.primaryBtn {
+  background: #111827;
+  color: white;
+  border-color: #111827;
+}
+
+.secondaryBtn {
+  background: white;
+}

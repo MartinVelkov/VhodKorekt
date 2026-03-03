@@ -1,0 +1,10 @@
+/* ContactForm.css */
+@media (min-width: 950px) {
+  .contact-form-container {
+    max-width: 900px; /* Adjust this width as needed */
+    width: 750px;
+  }
+  .Contact{
+    padding-top: 5%;
+  }
+}

@@ -1,0 +1,388 @@
+/* =========================================================
+   Contact / Landing Layout (Mobile-first, business polish)
+   Organized: Tokens → Base → Layout → Hero → Cards → Form
+   → MUI overrides → Info blocks → Footer → A11y → Breakpoints
+   ========================================================= */
+
+/* -----------------------------
+   1) TOKENS / GLOBAL BASE
+------------------------------ */
+:root {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  /* Colors */
+  --c-bg: #ffffff;
+  --c-text: rgba(17, 24, 39, 0.86);
+  --c-text-muted: rgba(17, 24, 39, 0.80);
+  --c-text-soft: rgba(17, 24, 39, 0.60);
+  --c-border: rgba(17, 24, 39, 0.14);
+  --c-border-soft: rgba(17, 24, 39, 0.06);
+
+  /* Brand */
+  --c-brand: #6d28d9;
+  --c-brand-2: #7c3aed;
+  --c-brand-accent: rgba(109, 40, 217, 0.10);
+
+  /* Focus */
+  --c-focus: rgba(59, 130, 246, 0.55);
+  --c-focus-ring: rgba(59, 130, 246, 0.18);
+  --c-focus-border: rgba(59, 130, 246, 0.7);
+
+  /* Shadows */
+  --shadow-card: 0 14px 36px rgba(0, 0, 0, 0.14);
+  --shadow-menu: 0 18px 40px rgba(0, 0, 0, 0.20);
+
+  /* Radius */
+  --r-card: 14px;
+  --r-field: 10px;
+  --r-btn: 12px;
+
+  /* Spacing */
+  --nav-offset: 64px;
+}
+
+body {
+  margin: 0;
+  font-family: inherit;
+}
+
+/* -----------------------------
+   2) PAGE SHELL
+------------------------------ */
+.page {
+  padding-top: var(--nav-offset); /* navbar offset */
+  background: var(--c-bg);
+}
+
+/* -----------------------------
+   3) HERO
+------------------------------ */
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--nav-offset));
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: #fff;
+  background: linear-gradient(90deg, #2563eb 0%, var(--c-brand) 100%);
+}
+
+/* Keep bg-[url('/img/background-3.png')] */
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background-image: url("/img/background-3.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.4;
+  transform: scale(1.02);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.50) 0%,
+    rgba(0, 0, 0, 0.62) 60%,
+    rgba(0, 0, 0, 0.70) 100%
+  );
+}
+
+.heroInner {
+  position: relative;
+  width: min(1120px, 100%);
+  padding: clamp(24px, 4vw, 48px);
+  text-align: center;
+}
+
+.logo {
+  display: block;
+  margin-inline: auto;
+  margin-bottom: 14px;
+  width: clamp(180px, 28vw, 340px);
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25));
+}
+
+.heroTitle {
+  margin: 0;
+  font-weight: 750;
+  letter-spacing: 0.4px;
+  line-height: 1.12;
+  font-size: clamp(28px, 4.8vw, 56px);
+}
+
+.heroSubtitle {
+  margin: 10px auto 0;
+  max-width: 60ch;
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.6;
+  font-size: clamp(14px, 1.2vw, 16px);
+}
+
+/* -----------------------------
+   4) CONTENT LAYOUT
+------------------------------ */
+.content {
+  /* lifted section like your -mt-32, but stable and responsive */
+  margin-top: clamp(-92px, -8vw, -140px);
+  padding: 0 0 clamp(36px, 6vw, 80px);
+  background: var(--c-bg);
+}
+
+.container {
+  width: min(1120px, 100%);
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* -----------------------------
+   5) CARDS (Base + Variants)
+------------------------------ */
+.card,
+.infoCard {
+  border-radius: var(--r-card);
+  background: #fff;
+  border: 1px solid var(--c-border-soft);
+  box-shadow: var(--shadow-card);
+}
+
+.cardBody {
+  padding: clamp(16px, 2.8vw, 24px);
+}
+
+.cardTitle {
+  margin: 0 0 14px 0;
+  font-weight: 750;
+  color: var(--c-text);
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.25;
+}
+
+/* If you must win against library styles in a module, keep these overrides.
+   Otherwise you can remove this whole block. */
+.card,
+.infoCard {
+  border-radius: var(--r-card) !important;
+  box-shadow: var(--shadow-card) !important;
+  border: 1px solid var(--c-border-soft) !important;
+}
+
+.cardBody {
+  padding: clamp(16px, 2.8vw, 24px) !important;
+}
+
+.cardTitle {
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+/* -----------------------------
+   6) FORM
+------------------------------ */
+.form {
+  display: grid;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--c-text-muted);
+}
+
+.input,
+.textarea {
+  width: 100%;
+  border-radius: var(--r-field);
+  border: 1px solid var(--c-border);
+  padding: 12px;
+  font-size: 15px;
+  line-height: 1.4;
+  background: #fff;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--c-focus-border);
+  box-shadow: 0 0 0 4px var(--c-focus-ring);
+}
+
+.submit {
+  height: 44px;
+  border-radius: var(--r-btn);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(90deg, var(--c-brand), var(--c-brand-2));
+  color: #fff;
+  font-weight: 750;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 120ms ease, filter 120ms ease, opacity 120ms ease;
+}
+
+.submit:hover {
+  filter: brightness(1.05);
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* -----------------------------
+   7) MUI SELECT (Overrides)
+------------------------------ */
+.muiControl {
+  margin: 0 !important;
+}
+
+.muiSelect {
+  border-radius: var(--r-field) !important;
+  background: #fff !important;
+  border: 1px solid var(--c-border) !important;
+}
+
+/* Fix MUI outline */
+.muiSelect :global(fieldset) {
+  border: none !important;
+}
+
+/* Focused state on root */
+.muiSelect:global(.Mui-focused) {
+  box-shadow: 0 0 0 4px var(--c-focus-ring);
+  border-color: var(--c-focus-border) !important;
+}
+
+/* Menu */
+.muiMenuPaper {
+  border-radius: 12px !important;
+  border: 1px solid rgba(17, 24, 39, 0.10) !important;
+  box-shadow: var(--shadow-menu) !important;
+}
+
+/* -----------------------------
+   8) INFO BLOCKS
+------------------------------ */
+.info {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.infoBody {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 16px !important;
+}
+
+.iconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--c-brand-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  color: var(--c-brand);
+}
+
+.infoText {
+  min-width: 0;
+}
+
+.infoLabel {
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-text-soft);
+}
+
+.infoValue {
+  margin-top: 2px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--c-text);
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+/* -----------------------------
+   9) FOOTER WRAP
+------------------------------ */
+.footerWrap {
+  background: var(--c-bg);
+}
+
+/* -----------------------------
+   10) ACCESSIBILITY (Focus-visible)
+------------------------------ */
+.page :where(a, button, input, textarea, [role="button"], [tabindex]):focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+/* -----------------------------
+   11) BREAKPOINTS
+------------------------------ */
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 24px;
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: 32px;
+  }
+
+  .grid {
+    gap: 22px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .heroInner {
+    padding: 48px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    width: min(1200px, 100%);
+  }
+}

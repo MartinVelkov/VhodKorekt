@@ -1,0 +1,264 @@
+/* Premium, calm, business-grade. No gimmicks. Mobile-first. */
+
+:root {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  --nav-offset: 64px;
+  --container-max: 1200px;
+
+  /* Palette (safe corporate default) */
+  --c-bg: #ffffff;
+  --c-ink: rgba(17, 24, 39, 0.92);
+  --c-muted: rgba(255, 255, 255, 0.82);
+
+  /* Gradients */
+  --g-hero: linear-gradient(135deg, #0b1224 0%, #2a1660 45%, #1242a6 100%);
+  --g-band: linear-gradient(180deg, #0b1020 0%, #111b35 100%);
+  --g-band-alt: linear-gradient(180deg, #0b1224 0%, #0c142b 100%);
+
+  /* Focus */
+  --c-focus: rgba(59, 130, 246, 0.60);
+
+  /* Radii */
+  --r-card: 16px;
+  --r-control: 12px;
+
+  /* Shadow system */
+  --sh-soft: 0 18px 50px rgba(0, 0, 0, 0.35);
+  --sh-card: 0 16px 44px rgba(0, 0, 0, 0.28);
+}
+
+body {
+  margin: 0;
+  font-family: inherit;
+  background: var(--c-bg);
+}
+
+.page {
+  padding-top: var(--nav-offset);
+  background: var(--c-bg);
+}
+
+/* ---------------- HERO ---------------- */
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--nav-offset));
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--g-hero);
+}
+
+/* Keep bg-[url('/img/background-3.png')] */
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background-image: url("/img/background-3.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.33;
+  transform: scale(1.04);
+  filter: saturate(1.05) contrast(1.05);
+}
+
+/* Vignette + contrast */
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 520px at 50% 35%, rgba(255, 255, 255, 0.10), transparent 62%),
+    radial-gradient(900px 700px at 15% 25%, rgba(124, 58, 237, 0.18), transparent 60%),
+    radial-gradient(800px 600px at 85% 30%, rgba(37, 99, 235, 0.18), transparent 58%),
+    linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.62) 60%, rgba(0,0,0,0.74) 100%);
+}
+
+/* Fine grain (premium feel) */
+.heroNoise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Subtle glow under content */
+.heroGlow {
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at 50% 35%, rgba(255,255,255,0.12), transparent 52%);
+  filter: blur(22px);
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  width: min(var(--container-max), 100%);
+  padding: clamp(24px, 4.8vw, 64px);
+  text-align: center;
+}
+
+.logo {
+  display: block;
+  margin-inline: auto;
+  margin-bottom: 18px;
+
+  width: clamp(180px, 24vw, 340px);
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+
+  filter: drop-shadow(0 22px 44px rgba(0, 0, 0, 0.40));
+}
+
+.heroTitle {
+  margin: 0;
+  color: #ffffff;
+  font-weight: 820;
+  letter-spacing: 0.3px;
+  line-height: 1.06;
+  font-size: clamp(34px, 5.6vw, 72px);
+
+  /* crisp readability */
+  text-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+
+.heroSubtitle {
+  margin: 14px auto 0;
+  max-width: 62ch;
+  color: var(--c-muted);
+  font-size: clamp(15px, 1.25vw, 18px);
+  line-height: 1.65;
+}
+
+/* ---------------- SECTIONS ---------------- */
+.band,
+.bandAlt {
+  padding: clamp(40px, 7vw, 110px) 0;
+}
+
+.band {
+  background: var(--g-band);
+}
+
+.bandAlt {
+  background: var(--g-band-alt);
+}
+
+.container {
+  width: min(var(--container-max), 92%);
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+.sectionGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(18px, 4vw, 52px);
+  align-items: center;
+}
+
+.textCol,
+.mediaCol {
+  min-width: 0;
+}
+
+/* Premium glass panel with border glow */
+.textPanel {
+  position: relative;
+  max-width: 72ch;
+
+  padding: clamp(16px, 2.6vw, 26px);
+  border-radius: var(--r-card);
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: var(--sh-card);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.textPanel::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.55), rgba(37,99,235,0.45), rgba(255,255,255,0.12));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+.bodyText {
+  margin: 0;
+  color: rgba(243, 246, 255, 0.94);
+  font-weight: 450;
+  line-height: 1.82;
+  font-size: clamp(16px, 1.12vw, 19px);
+}
+
+/* ---------------- MEDIA ---------------- */
+.mediaCard {
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: var(--sh-soft);
+
+  transform: translateZ(0);
+}
+
+.mediaImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+/* Footer wrapper */
+.footerWrap {
+  background: var(--c-bg);
+}
+
+/* ---------------- A11Y ---------------- */
+.page :where(a, button, input, select, textarea, [role="button"], [tabindex]):focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 3px;
+  border-radius: var(--r-control);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroBg { transform: none; }
+}
+
+/* ---------------- BREAKPOINTS ---------------- */
+/* ≥768px */
+@media (min-width: 768px) {
+  .container { padding-inline: 24px; }
+
+  .sectionGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+/* ≥1024px */
+@media (min-width: 1024px) {
+  .container { padding-inline: 32px; }
+
+  .reverseAtDesktop .textCol { order: 2; }
+  .reverseAtDesktop .mediaCol { order: 1; }
+}
+
+/* ≥1440px */
+@media (min-width: 1440px) {
+  .container {
+    width: min(1300px, 95%);
+  }
+}

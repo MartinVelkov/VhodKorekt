@@ -1,0 +1,90 @@
+.card{
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow:
+    0 1px 0 rgba(15, 23, 42, 0.03),
+    0 16px 40px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+  transition: transform 120ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(15, 23, 42, 0.14);
+  box-shadow:
+    0 1px 0 rgba(15, 23, 42, 0.04),
+    0 22px 60px rgba(15, 23, 42, 0.12);
+}
+
+.body{
+  padding: 18px;
+  text-align: center;
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+}
+
+.photo{
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(15, 23, 42, 0.02);
+}
+
+/* Icon bubble */
+.iconCircle{
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.10);
+}
+
+/* Icon size */
+.icon{
+  width: 24px;
+  height: 24px;
+}
+
+/* Title */
+.title{
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+/* -------- Color variants (background + icon color) -------- */
+/* default if missing: iconCircle has neutral border; no bg */
+.icon_blue{
+  background: rgba(100, 11, 202);
+  border-color: rgb(100, 11, 202);
+  color: #1d4ed8;
+}
+
+
+.icon_deep-purple{
+  background: rgba(100, 11, 202);
+  border-color: rgb(100, 11, 202);
+  color: #5b21b6;
+}
+
+/* Accessibility */
+.card:focus-within{
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.18),
+    0 18px 60px rgba(15, 23, 42, 0.10);
+}
+
+/* Responsive */
+@media (min-width: 768px){
+  .body{ padding: 20px; }
+  .photo{ height: 170px; }
+}

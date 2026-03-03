@@ -1,0 +1,298 @@
+/* =========================
+   EventModal CSS (FIXED)
+   ✅ No overlaps / no “double inputs”
+   ✅ Single grid (.evGrid) controls layout
+   ✅ Proper spacing + consistent control height
+   ✅ Read-only looks clean (not “stacked”)
+========================= */
+
+.evModalOverlay{
+  position: fixed;
+  inset: 0;
+  z-index: 2100;
+  background: rgba(2, 6, 23, 0.62);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+/* Modal shell */
+.evModal{
+  width: 100%;
+  max-width: 980px;
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  scrollbar-gutter: stable;
+
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  box-shadow: 0 22px 70px rgba(0,0,0,0.26);
+}
+
+/* Header */
+.evModalHeader{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid rgba(15,23,42,0.06);
+}
+
+.evModalTitle{
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 900;
+  color:#0f172a;
+}
+
+.evModalMeta{
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.evPill,
+.evPillMuted,
+.evPillWarn{
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(15,23,42,0.10);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.evPill{
+  background: rgba(25,135,84,0.10);
+  border-color: rgba(25,135,84,0.22);
+  color:#0a4027;
+}
+
+.evPillMuted{
+  background: rgba(15,23,42,0.03);
+  color:#334155;
+}
+
+.evPillWarn{
+  background: rgba(220,38,38,0.08);
+  border-color: rgba(220,38,38,0.18);
+  color:#7f1d1d;
+}
+
+.evIconClose{
+  min-height: 42px;
+  min-width: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(15,23,42,0.12);
+  background: rgba(15,23,42,0.03);
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.evIconClose:hover{
+  background: rgba(15,23,42,0.06);
+  border-color: rgba(15,23,42,0.18);
+}
+
+.evIconClose:focus-visible{
+  outline:none;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.18);
+  border-color: rgba(37,99,235,0.35);
+}
+
+/* Error */
+.evErrorBox{
+  margin: 12px 16px 0;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(220,38,38,0.22);
+  background: rgba(220,38,38,0.08);
+  color:#7f1d1d;
+  font-weight: 800;
+}
+
+/* =========================
+   Form layout (IMPORTANT)
+   - evForm is NOT 2 columns
+   - evGrid is the only grid that does columns
+========================= */
+.evForm{
+  padding: 14px 16px 16px;
+  display: grid;
+  gap: 14px;
+}
+
+/* ONLY layout grid for fields */
+.evGrid{
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr; /* mobile */
+  align-items: start;
+}
+
+/* Desktop: two clean columns */
+@media (min-width: 900px){
+  .evGrid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Full width items */
+.evSpan2{
+  grid-column: 1 / -1;
+}
+
+/* Field wrapper */
+.evField{
+  display: grid;
+  gap: 6px;
+  min-width: 0; /* critical inside grid */
+}
+
+.evLabel{
+  font-size: 13px;
+  font-weight: 900;
+  color:#0f172a;
+}
+
+.evReq{
+  color:#dc2626;
+}
+
+/* Controls: prevent “double/overlap” look */
+.evInput,
+.evSelect,
+.evTextarea{
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(15,23,42,0.12);
+  background:#fff;
+  color:#0f172a;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  /* kills the “stacked border” illusion on some browsers */
+  margin: 0;
+  outline: none;
+}
+
+.evTextarea{
+  min-height: 170px;
+  line-height: 1.35;
+  resize: vertical;
+}
+
+.evInput:focus-visible,
+.evSelect:focus-visible,
+.evTextarea:focus-visible{
+  outline:none;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.16);
+  border-color: rgba(37,99,235,0.35);
+}
+
+/* Read-only (clean & consistent) */
+.evReadOnly{
+  background: rgba(15,23,42,0.06) !important;
+  color: rgba(15,23,42,0.75) !important;
+  border-color: rgba(15,23,42,0.14) !important;
+  cursor: not-allowed;
+}
+
+/* File + attachments */
+.evFile{
+  width: 100%;
+  padding: 6px 0;
+}
+
+.evAttachList{
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.evAttachItem{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(15,23,42,0.10);
+  background: rgba(15,23,42,0.02);
+  color:#0f172a;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.evAttachItem:hover{
+  background: rgba(15,23,42,0.04);
+  border-color: rgba(15,23,42,0.16);
+}
+
+/* Actions (footer) */
+.evActions{
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+
+  padding-top: 14px;
+  border-top: 1px solid rgba(15,23,42,0.06);
+}
+
+.evBtn{
+  min-height: 44px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(15,23,42,0.12);
+  background: rgba(15,23,42,0.03);
+  color:#0f172a;
+  font-weight: 900;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.evBtn:hover{
+  background: rgba(15,23,42,0.06);
+  border-color: rgba(15,23,42,0.18);
+}
+
+.evBtn:focus-visible{
+  outline:none;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.18);
+  border-color: rgba(37,99,235,0.35);
+}
+
+.evBtnPrimary{
+  background: #198754;
+  border-color: #198754;
+  color:#fff;
+}
+
+.evBtnPrimary:hover{
+  background: #167a4b;
+  border-color: #167a4b;
+}
+
+.evBtnGhost{
+  background: rgba(15,23,42,0.03);
+}
+
+/* ===========================================
+   REMOVE THESE if they exist elsewhere:
+   - .evForm { grid-template-columns: 1fr 1fr; }
+   That was causing weird layout interactions.
+=========================================== */
